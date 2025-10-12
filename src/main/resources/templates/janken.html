@@ -7,7 +7,16 @@
 
 <body>
   <div th:if="${username}">
-    Hi [[${username}]]
+    <p>Hi [[${username}]]</p>
+    <a href="/janken?hand=gu">グー</a>
+    <a href="/janken?hand=choki">チョキ</a>
+    <a href="/janken?hand=pa">パー</a>
+  </div>
+
+  <div th:if="${result}">
+    <p>あなたの手 [[${playerHand}]]</p>
+    <p>相手の手 [[${cpuHand}]]</p>
+    <p>結果 [[${result}]]</p>
   </div>
 
 
