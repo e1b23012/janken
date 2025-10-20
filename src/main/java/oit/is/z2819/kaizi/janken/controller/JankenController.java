@@ -11,41 +11,46 @@ public class JankenController {
 
   @PostMapping("/janken")
   public String janken(@RequestParam String username, ModelMap model) {
-    model.addAttribute("username", username);
-    return "janken.html";
+  model.addAttribute("username", username);
+  return "janken.html";
   }
 
   @GetMapping("/janken")
   public String jankenGet(@RequestParam String hand, ModelMap model) {
-    model.addAttribute("playerHand", hand);
-    String cpuHand = "gu";
-    model.addAttribute("cpuHand", cpuHand);
+  model.addAttribute("playerHand", hand);
+  String cpuHand = "gu";
+  model.addAttribute("cpuHand", cpuHand);
 
-    String result = "";
-    if (hand.equals(cpuHand)) {
-      result = "引き分け";
-    } else if (hand.equals("gu")) {
-      if (cpuHand.equals("choki")) {
-        result = "勝ち";
-      } else {
-        result = "負け";
-      }
+  String result = "";
+  if (hand.equals(cpuHand)) {
+  result = "引き分け";
+  } else if (hand.equals("gu")) {
+  if (cpuHand.equals("choki")) {
+  result = "勝ち";
+  } else {
+  result = "負け";
+  }
 
-    } else if (hand.equals("choki")) {
-      if (cpuHand.equals("pa")) {
-        result = "勝ち";
-      } else {
-        result = "負け";
-      }
-    } else if (hand.equals("pa")) {
-      if (cpuHand.equals("gu")) {
-        result = "勝ち";
-      } else {
-        result = "負け";
-      }
-    }
-    model.addAttribute("result", result);
+  } else if (hand.equals("choki")) {
+  if (cpuHand.equals("pa")) {
+  result = "勝ち";
+  } else {
+  result = "負け";
+  }
+  } else if (hand.equals("pa")) {
+  if (cpuHand.equals("gu")) {
+  result = "勝ち";
+  } else {
+  result = "負け";
+  }
+  }
+  model.addAttribute("result", result);
 
+  return "janken.html";
+  }
+
+  @GetMapping("/janken")
+  public String jankenGet2(ModelMap model) {
     return "janken.html";
   }
 
