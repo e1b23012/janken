@@ -75,4 +75,44 @@ public class JankenController {
     model.addAttribute("opponent_name", user.selectUserById(id).getName());
     return "match.html";
   }
+
+  @GetMapping("/fight")
+  String fight(@RequestParam String hand, @RequestParam String user_name, @RequestParam Integer opponent_id,
+      ModelMap model, Principal prin) {
+    model.addAttribute("user_name", user_name);
+    model.addAttribute("opponent_id", opponent_id);
+    model.addAttribute("opponent_name", user.selectUserById(opponent_id).getName());
+    model.addAttribute("playerHand", hand);
+    String cpuHand = "gu";
+    model.addAttribute("cpuHand", cpuHand);
+
+    String result = "";
+    if (hand.equals(cpuHand)) {
+      result = "引き分け";
+    } else if (hand.equals("gu")) {
+      if (cpuHand.equals("choki")) {
+        result = "勝ち";
+      } else {
+        result = "負け";
+      }
+
+    } else if (hand.equals("choki")) {
+      if (cpuHand.equals("pa")) {
+        result = "勝ち";
+      } else {
+        result = "負け";
+      }
+    } else if (hand.equals("pa")) {
+      if (cpuHand.equals("gu")) {
+        result = "勝ち";
+      } else {
+        result = "負け";
+      }
+    }
+    model.addAttribute("result", result);
+
+    matches.insertMatch(user.selectUserByName(user_name).getId(), opponent_id, hand, cpuHand);
+
+    return "match.html";
+  }
 }
