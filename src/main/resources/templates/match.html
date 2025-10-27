@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Match</title>
+</head>
+
+<body>
+  <th:block th:if="${opponent_id != null && user_name != null && opponent_name != null}">
+    <h2>[[${user_name}]] vs [[${opponent_name}]]</h2>
+
+    <a th:href="@{/fight(hand=gu, user_name=${user_name}, opponent_id=${opponent_id})}">グー</a>
+    <a th:href="@{/fight(hand=choki, user_name=${user_name}, opponent_id=${opponent_id})}">チョキ</a>
+    <a th:href="@{/fight(hand=pa, user_name=${user_name}, opponent_id=${opponent_id})}">パー</a>
+
+    <br>
+    <th:block th:if="${result}">
+      <p>[[${user_name}]]の手: [[${playerHand}]]</p>
+      <p>[[${opponent_name}]]の手: [[${cpuHand}]]</p>
+      <p>結果: [[${result}]]</p>
+    </th:block>
+
+    <a href="/janken">もどる</a>
+  </th:block>
+</body>
+
+</html>

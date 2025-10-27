@@ -20,16 +20,27 @@
     <p>結果 [[${result}]]</p>
   </div>
 
-  <div th:if="${room}">
-    <p>エントリー</p>
+  <th:block th:if="${matches != null}">
+    <h3>試合結果</h3>
     <ul>
-      <!--roomオブジェクトのroomNoというフィールドを指定している-->
-      <li>RoomNo:[[${room.roomNo}]]</li>
-      <!--eachは所謂for each．この場合roomオブジェクトのusersフィールドにあるすべてのデータを一通り表示する
-          thが指定されているので[]が不要になる-->
-      <li th:each="user : ${room.users}">[[${user}]]</li>
+      <li th:each="match : ${matches}">
+        [[${match.id}]] :
+        [[${match.user1}]]([[${match.user1Hand}]]) vs [[${match.user1}]]([[${match.user2Hand}]])
+      </li>
     </ul>
-  </div>
+
+
+    <th:block th:if="${users}">
+      <p>エントリー</p>
+      <ul>
+        <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}">[[${user.name}]]</a></li>
+      </ul>
+    </th:block>
+
+  </th:block>
+
+  <a th:href="@{/logout}">ログアウト</a>
+  </th:block>
 
 
 </body>
