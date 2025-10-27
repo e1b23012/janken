@@ -20,12 +20,22 @@
     <p>結果 [[${result}]]</p>
   </div>
 
-  <th:block th:if="${users}">
-    <p>エントリー</p>
+  <th:block th:if="${matches != null}">
+    <h3>試合結果</h3>
     <ul>
-      <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}">[[${user.name}]]</a></li>
+      <li th:each="match : ${matches}">
+        [[${match.id}]] :
+        [[${match.user1}]]([[${match.user1Hand}]]) vs [[${match.user1}]]([[${match.user2Hand}]])
+      </li>
     </ul>
-  </th:block>
+
+
+    <th:block th:if="${users}">
+      <p>エントリー</p>
+      <ul>
+        <li th:each="user : ${users}"><a th:href="@{/match(id=${user.id})}">[[${user.name}]]</a></li>
+      </ul>
+    </th:block>
 
   </th:block>
 
