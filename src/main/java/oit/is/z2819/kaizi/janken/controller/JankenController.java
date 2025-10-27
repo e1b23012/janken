@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import oit.is.z2819.kaizi.janken.model.Entry;
+import oit.is.z2819.kaizi.janken.model.User;
+import oit.is.z2819.kaizi.janken.model.UserMapper;
 
 @Controller
 public class JankenController {
@@ -17,11 +18,15 @@ public class JankenController {
   @Autowired
   private Entry entry;
 
+  @Autowired
+  private UserMapper user;
+
   @GetMapping("/janken")
   public String jankenHand(@RequestParam(required = false) String hand, ModelMap model, Principal prin) {
     model.addAttribute("username", prin.getName());
     entry.addUser(prin.getName());
     model.addAttribute("room", entry);
+    model.addAttribute("users", user.selectAllUsers());
     if (hand == null) {
       return "janken.html";
     }
