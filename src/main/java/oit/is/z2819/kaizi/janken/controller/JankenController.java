@@ -68,4 +68,11 @@ public class JankenController {
     return "janken.html";
   }
 
+  @GetMapping("/match")
+  String match(@RequestParam Integer id, ModelMap model, Principal prin) {
+    model.addAttribute("opponent_id", user.selectUserById(id).getId());
+    model.addAttribute("user_name", prin.getName());
+    model.addAttribute("opponent_name", user.selectUserById(id).getName());
+    return "match.html";
+  }
 }
