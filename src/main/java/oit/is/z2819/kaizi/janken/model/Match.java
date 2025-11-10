@@ -35,16 +35,16 @@ public class Match {
     return user1Hand;
   }
 
-  public void setUser1Hand(String user1Hand) {
-    this.user1Hand = user1Hand;
+  public void setUser1Hand(String hand1) {
+    this.user1Hand = hand1;
   }
 
   public String getUser2Hand() {
     return user2Hand;
   }
 
-  public void setUser2Hand(String user2Hand) {
-    this.user2Hand = user2Hand;
+  public void setUser2Hand(String hand2) {
+    this.user2Hand = hand2;
   }
 
 }
