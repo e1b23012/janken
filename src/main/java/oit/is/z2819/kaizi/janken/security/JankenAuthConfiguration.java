@@ -56,6 +56,8 @@ public class JankenAuthConfiguration {
         .password("{bcrypt}$2y$05$V9MOXmn736Fg7MS1LEUH/e1YWArzm.3BA6B2/hMZvLOZj6rg3kvoG").roles("USER").build();
     UserDetails honda = User.withUsername("ほんだ")
         .password("{bcrypt}$2y$05$0VWZXLwfAO8Q4CsdU10yjOoMojSa0Xi3McTUhVMSF5wsnf98tb2d6").roles("USER").build();
+    UserDetails honda = User.withUsername("いがき")
+        .password("{bcrypt}$2y$05$uoW8riumBnIQjfnF7jGxXuKuiMzHvfq7pq2x/4.6/yc.VR1KCQb3q").roles("USER").build();
     UserDetails admin = User.withUsername("admin")
         .password("{bcrypt}$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e").roles("ADMIN").build();
 
